@@ -3,6 +3,9 @@ export default {
     title: 'Currency converter',
     amount: 'Amount',
     validationError: 'Amount must be a positive number',
-    test: 'test'
+    test: 'test',
+    currencies: {
+      dollar: "/U+0024",
+    },
   },
 };

@@ -1,0 +1,22 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+
+
+$primary: #0F4C81;
+.btn.btn-outline-primary {
+  --bs-btn-active-color: #fff;
+  --bs-btn-hover-color: #fff;
+};
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary
+));
+
+
+#resultInput::placeholder {
+  color: $primary;
+  opacity: 1;
+}
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

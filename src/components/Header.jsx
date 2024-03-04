@@ -34,7 +34,7 @@ const Header = () => {
         key={uniqueId()}
         id={`${idx}-radio`}
         type="radio"
-        variant="outline-secondary"
+        variant="outline-primary"
         name="radio"
         value={radio}
         checked={radioValue === radio}
