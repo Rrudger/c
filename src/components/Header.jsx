@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   Navbar,
@@ -7,18 +8,21 @@ import {
 } from 'react-bootstrap';
 import { uniqueId } from 'lodash';
 import i18n from '../i18n';
-import LangContext from '../contexts';
+import { actions } from '../slices/mainSlice.js';
 
 const Header = () => {
-  const { lang, langsList, setLang } = useContext(LangContext);
-  const radios = langsList;
+  const dispatch = useDispatch();
+
+  const lang = useSelector((state) => state.mainState.lang);
+  const langList = useSelector((state) => state.mainState.langList);
+
+  const radios = langList;
   const [radioValue, setRadioValue] = useState(lang);
 
   const handleChangeLang = (e) => {
     const newLang = e.currentTarget.value;
     setRadioValue(newLang);
-    i18n.changeLanguage(newLang);
-    setLang(newLang);
+    dispatch(actions.setLang(newLang));
   };
 
   return (
@@ -29,21 +33,21 @@ const Header = () => {
         </Navbar.Brand>
 
         <ButtonGroup>
-    {radios.map((radio, idx) => (
-      <ToggleButton
-        key={uniqueId()}
-        id={`${idx}-radio`}
-        type="radio"
-        variant="outline-primary"
-        name="radio"
-        value={radio}
-        checked={radioValue === radio}
-        onChange={handleChangeLang}
-      >
-        {radio}
-      </ToggleButton>
-    ))}
-  </ButtonGroup>
+          {radios.map((radio, idx) => (
+            <ToggleButton
+              key={uniqueId()}
+              id={`${idx}-radio`}
+              type="radio"
+              variant="outline-primary"
+              name="radio"
+              value={radio}
+              checked={radioValue === radio}
+              onChange={handleChangeLang}
+            >
+              {radio}
+            </ToggleButton>
+          ))}
+        </ButtonGroup>
 
       </Container>
     </Navbar>

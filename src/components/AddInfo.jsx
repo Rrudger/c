@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 
 
-const CurrencyList = () => {
+const AddInfo = () => {
   return (
     <Container className="h-100 my-2 mb-3 overflow-hidden rounded shadow">
       <div>
@@ -14,4 +14,4 @@ const CurrencyList = () => {
   );
 };
 
-export default CurrencyList;
+export default AddInfo;
